@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = transform.forward * y*10+transform.right*x*10;
         float xx = 5 * Input.GetAxis("Mouse X");
         float yy = 5 * -Input.GetAxis("Mouse Y");
-        this.gameObject.transform.Rotate(yy, xx, 0);
+        this.gameObject.transform.Rotate(00, xx, 0);
     }
     private void OnCollisionEnter(Collision collision)
     {
