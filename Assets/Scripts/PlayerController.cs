@@ -24,4 +24,11 @@ public class PlayerController : MonoBehaviour
         float yy = 5 * -Input.GetAxis("Mouse Y");
         this.gameObject.transform.Rotate(yy, xx, 0);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag=="Portal")
+        {
+            print("Collide Portal");
+        }
+    }
 }

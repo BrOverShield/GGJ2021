@@ -4,12 +4,13 @@
     {
         _Color("Color",Color)=(1,1,1,1)
 		[Enum(Equal,3,NotEqual,6)] _StencilTest ("Stencil Test",int)=6
+		_RefValue("RefValue",int) = 0
     }
     SubShader
     {
        Color [_Color]
 	   Stencil{
-		Ref 0
+		Ref [_RefValue]
 		Comp [_StencilTest]
 	}
 
