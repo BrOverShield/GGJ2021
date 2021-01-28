@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Portal
-  m_Shader: {fileID: 4800000, guid: 1b3d46f71ab2b25449f80a62b996478a, type: 3}
+  m_Name: FilterHide
+  m_Shader: {fileID: 4800000, guid: a3c5eab28c7eac74e99d5d239d874433, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -70,6 +70,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _StencilTest: 6
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:

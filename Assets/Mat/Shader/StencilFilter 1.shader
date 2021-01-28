@@ -1,4 +1,4 @@
-﻿Shader "Unlit/StencilFilter"
+﻿Shader "Unlit/StencilFilter1"
 {
     Properties
     {
@@ -9,7 +9,7 @@
     {
        Color [_Color]
 	   Stencil{
-		Ref 0
+		Ref 1
 		Comp [_StencilTest]
 	}
 
