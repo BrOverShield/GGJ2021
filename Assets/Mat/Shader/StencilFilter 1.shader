@@ -12,7 +12,7 @@
 	   Stencil{
 		Ref[_RefValue]
 		Comp [_StencilTest]
-	}
+		}
 
         Pass
         {

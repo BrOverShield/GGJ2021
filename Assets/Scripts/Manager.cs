@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-    public GameObject[] Groups;
-    void invertRef(GameObject go)
+
+    public Material[] ShadingsMats;
+    void invertRef(Material M)
     {
-        int oldValue = go.GetComponent<Renderer>().material.GetInt("_RefValue");
+        int oldValue = M.GetInt("_RefValue");
         int newValue=0;
         if (oldValue == 1)
         {
@@ -18,7 +19,7 @@ public class Manager : MonoBehaviour
             newValue = 1;
         }
         //print(oldValue+""+ newValue);
-        go.GetComponent<Renderer>().material.SetInt("_RefValue", newValue);
+        M.SetInt("_RefValue", newValue);
         
     }
     void InversePortalDir(GameObject go)
@@ -28,15 +29,10 @@ public class Manager : MonoBehaviour
     }
     public void passPortal(int id)
     {
-        for (int i = 0; i < Groups[id].transform.childCount; i++)
+
+        for (int i = 0; i < ShadingsMats.Length; i++)
         {
-            if(id==0)
-            {
-                for (int j = 0; j < 2; j++)
-                {
-                    invertRef(Groups[id].transform.GetChild(i).transform.GetChild(j).gameObject);
-                }
-            }
+            invertRef(ShadingsMats[i]);
         }
     }
 }
