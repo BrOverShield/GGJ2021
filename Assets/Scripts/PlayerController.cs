@@ -8,9 +8,12 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     float x;
     float y;
+    Manager GM;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        GM = FindObjectOfType<Manager>();
     }
 
     // Update is called once per frame
@@ -24,11 +27,13 @@ public class PlayerController : MonoBehaviour
         float yy = 5 * -Input.GetAxis("Mouse Y");
         this.gameObject.transform.Rotate(00, xx, 0);
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag=="Portal")
+
+        if (other.gameObject.tag=="Portal")
         {
-            print("Collide Portal");
+            print("passPortal");
+            GM.passPortal(other.gameObject.GetComponent<portalBehavior>().id);
         }
     }
 }
