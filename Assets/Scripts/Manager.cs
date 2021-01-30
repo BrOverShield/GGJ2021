@@ -7,12 +7,14 @@ public class Manager : MonoBehaviour
 
     public Material[] ShadingsMats;
     public GameObject[] portals;
+    public GameObject[] Salles;
     int FocusPortalid = 0;
     public bool WrongDirection = false;
     float WringDirectionTimeOut = 0;
     private void Start()
     {
         ResetDimmenssions();
+        ActivateSalles();
     }
     private void Update()
     {
@@ -92,6 +94,23 @@ public class Manager : MonoBehaviour
             {
                 portals[i].SetActive(false);
                 print("Deactivating portal " + i);
+            }
+        }
+    }
+    public void ActivateSalles()
+    {
+        for (int i = 0; i < Salles.Length; i++)
+        {
+
+            if (Salles[i].GetComponent<DimmensionID>().ID == FocusPortalid)
+            {
+                Salles[i].transform.GetChild(0).gameObject.GetComponent<Collider>().enabled = true;
+                
+            }
+            else
+            {
+                Salles[i].transform.GetChild(0).gameObject.GetComponent<Collider>().enabled = false;
+
             }
         }
     }

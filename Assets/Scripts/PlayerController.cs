@@ -26,12 +26,15 @@ public class PlayerController : MonoBehaviour
         y = Input.GetAxis("Vertical");
 
         rb.velocity = transform.forward * y*10+transform.right*x*10;
+
+       
         float xx = 5 * Input.GetAxis("Mouse X");
         float yy = 5 * -Input.GetAxis("Mouse Y");
-        this.gameObject.transform.Rotate(00, xx, 0);
+        //this.gameObject.transform.Rotate(00, xx, 0);
 
         
     }
+   
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<DimmensionID>())
