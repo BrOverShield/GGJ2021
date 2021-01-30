@@ -1,4 +1,4 @@
-﻿ Shader "Unlit/PortalShader"
+﻿ Shader "Unlit/PortalShader2"
 {
     
     SubShader
@@ -7,7 +7,7 @@
 		ColorMask 0 
 	  Stencil
 	  {
-		Ref 99
+		Ref 2
 		Pass replace
 	  }
 

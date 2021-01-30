@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class DimmensionID : MonoBehaviour
 {
-    public int ID = 0;
+    public int ID = 1;
+    
 }

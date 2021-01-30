@@ -6,20 +6,71 @@ public class Manager : MonoBehaviour
 {
 
     public Material[] ShadingsMats;
-    void invertRef(Material M)
+    public GameObject[] portals;
+    int FocusPortalid = 0;
+    public bool WrongDirection = false;
+    float WringDirectionTimeOut = 0;
+    private void Start()
     {
-        int oldValue = M.GetInt("_RefValue");
-        int newValue=0;
-        if (oldValue == 1)
+        ResetDimmenssions();
+    }
+    private void Update()
+    {
+        if(WrongDirection)
         {
-            newValue = 0;
+            WringDirectionTimeOut += Time.deltaTime;
+            if(WringDirectionTimeOut>1f)
+            {
+                WrongDirection = false;
+                
+            }
         }
         else
         {
-            newValue = 1;
+            WringDirectionTimeOut = 0;
         }
+    }
+    void ResetDimmenssions()
+    {
+        for (int i = 0; i < ShadingsMats.Length; i++)
+        {
+            Material M = ShadingsMats[i];
+            if (M.GetInt("_OriRefValue") == 99)
+            {
+                M.SetInt("_OriRefValue", 0);
+            }
+            ShadingsMats[i].SetInt("_RefValue", ShadingsMats[i].GetInt("_OriRefValue"));
+
+        }
+    }
+    void invertRef(Material M,int from,int to)
+    {
+        int oldValue = M.GetInt("_RefValue");
+        if(M.GetInt("_OriRefValue")==0)
+        {
+            M.SetInt("_OriRefValue", 99);
+        }
+
+        if(oldValue==0)
+        {
+            
+            M.SetInt("_RefValue", M.GetInt("_OriRefValue"));
+        }
+        else if(oldValue==to)
+        {
+            
+            M.SetInt("_RefValue", 0);
+        }
+        if(to==0)
+        {
+            if(oldValue==99)
+            {
+                M.SetInt("_RefValue", 0);
+            }
+        }
+        
         //print(oldValue+""+ newValue);
-        M.SetInt("_RefValue", newValue);
+        
         
     }
     void InversePortalDir(GameObject go)
@@ -27,12 +78,33 @@ public class Manager : MonoBehaviour
        
         go.transform.rotation = Quaternion.Euler(0,180,0);
     }
-    public void passPortal(int id)
+    public void ActivatePortals()
     {
+        for (int i = 0; i < portals.Length; i++)
+        {
 
+            if (portals[i].GetComponent<DimmensionID>().ID == FocusPortalid)
+            {
+                portals[i].SetActive(true);
+                print("activating portal " + FocusPortalid);
+            }
+            else
+            {
+                portals[i].SetActive(false);
+                print("Deactivating portal " + i);
+            }
+        }
+    }
+    public void passPortal(int From,int To)
+    {
+        //DimmensionID[] idDimmenssionCheck = FindObjectsOfType<DimmensionID>();
+        FocusPortalid = To;
+        
         for (int i = 0; i < ShadingsMats.Length; i++)
         {
-            invertRef(ShadingsMats[i]);
+            //inverse seulement ceux qui sont du from et du to en fait
+            
+            invertRef(ShadingsMats[i],From,To);
         }
     }
 }

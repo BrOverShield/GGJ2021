@@ -34,19 +34,55 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.GetComponent<DimmensionID>())
+        {
+            if (other.GetComponent<DimmensionID>().ID != this.gameObject.GetComponent<DimmensionID>().ID)
+            {
+                return;
+            }
+
+        }
+        
         if (other.gameObject.tag == "NPC")
         {
+            if (other.GetComponent<DimmensionID>().ID != this.gameObject.GetComponent<DimmensionID>().ID)
+            {
+                return;
+            }
             other.GetComponent<QuestGiverBehavior>().ShowTalkButton();
             
            
         }
         if (other.gameObject.tag=="Portal")
         {
-            print("passPortal");
-            GM.passPortal(other.gameObject.GetComponent<portalBehavior>().id);
+            
+            if(GM.WrongDirection)
+            {
+                return;
+            }
+
+            int NewDimmenssion= other.gameObject.GetComponent<portalBehavior>().id;//nouvelle dimmenssion
+            int OldDimmenssion = this.gameObject.GetComponent<DimmensionID>().ID;//ancienne dimmenssion
+
+            this.gameObject.GetComponent<DimmensionID>().ID = NewDimmenssion;//me deplace dans la nouvelle dimmenssion   
+            
+            if(other.gameObject.GetComponent<portalBehavior>().BothWay)//si on peut revenir dans le meme portail
+            {
+                other.gameObject.GetComponent<DimmensionID>().ID = NewDimmenssion;//deplace le portail dans ma nouvelle dimmenssion
+                other.gameObject.GetComponent<portalBehavior>().id = OldDimmenssion;//Set la destination du portail vers l'ancienne dimmenssion
+            }
+            
+
+            print("passPortal From "+OldDimmenssion+" TO "+NewDimmenssion);
+            GM.passPortal(OldDimmenssion,NewDimmenssion);
+
         }
         if(other.gameObject.tag=="Item")
         {
+            if (other.GetComponent<DimmensionID>().ID != this.gameObject.GetComponent<DimmensionID>().ID)
+            {
+                return;
+            }
             other.GetComponent<ItemBehavior>().ShowE();
         }
     }
