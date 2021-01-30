@@ -7,7 +7,7 @@ public class DoorOpening : MonoBehaviour
     bool isfocus = false;
     bool doorHasBenOpen = false;
     float T0 = 0;
-   
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag=="Player")
