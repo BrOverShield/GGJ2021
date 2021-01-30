@@ -39,7 +39,7 @@ public class QuestGiverBehavior : MonoBehaviour
                 {
                     Instantiate(QuestCompleteFx, this.transform.position, Quaternion.identity);
                     ItemShow.SetActive(true);
-                    this.GetComponent<Animator>().enabled = false;
+                    //this.GetComponent<Animator>().enabled = false;
                 }
                 
             }
