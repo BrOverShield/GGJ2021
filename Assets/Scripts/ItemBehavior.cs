@@ -7,6 +7,7 @@ public class ItemBehavior : MonoBehaviour
     public GameObject E;
     bool isFocus = false;
     PlayerController player;
+    //public GameObject EToPickup;
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
@@ -35,5 +36,6 @@ public class ItemBehavior : MonoBehaviour
     {
         player.questComplete = true;
         this.gameObject.SetActive(false);
+        E.SetActive(false);
     }
 }

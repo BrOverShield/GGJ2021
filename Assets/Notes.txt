@@ -1,6 +1,2 @@
 todo
 
-plus de deux dimmenssions
-	le ref du portail est son id
-		a travers le portail, on vois ce qui = son id
-		hors du portail on cache ce qui = son id

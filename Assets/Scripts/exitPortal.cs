@@ -19,6 +19,7 @@ public class exitPortal : MonoBehaviour
             {
                 this.transform.parent.GetComponent<portalBehavior>().ExitTrig = true;
                 Gm.ActivatePortals();
+                Gm.ActivateSalles();
                 EnterTrig = false;
             }
         }

@@ -86,6 +86,7 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
+            print("Show E");
             other.GetComponent<ItemBehavior>().ShowE();
         }
     }

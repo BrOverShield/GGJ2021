@@ -3993,6 +3993,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall
       objectReference: {fileID: 0}
+    - target: {fileID: 6140364039655279955, guid: 1cc660ad73ff71d4bb03fdb11983f350,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1953b90cb370ba341beecd7b2c2433cb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cc660ad73ff71d4bb03fdb11983f350, type: 3}
 --- !u!1 &809879152
@@ -8249,6 +8254,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6140364039655279955, guid: 1cc660ad73ff71d4bb03fdb11983f350,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1953b90cb370ba341beecd7b2c2433cb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cc660ad73ff71d4bb03fdb11983f350, type: 3}
 --- !u!1 &1795821537
