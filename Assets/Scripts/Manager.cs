@@ -104,12 +104,21 @@ public class Manager : MonoBehaviour
 
             if (Salles[i].GetComponent<DimmensionID>().ID == FocusPortalid)
             {
-                Salles[i].transform.GetChild(0).gameObject.GetComponent<Collider>().enabled = true;
+                for (int j = 0; j < Salles[i].transform.childCount; j++)
+                {
+                    Salles[i].transform.GetChild(j).gameObject.GetComponent<Collider>().enabled = true;
+                }
+                
                 
             }
             else
             {
-                Salles[i].transform.GetChild(0).gameObject.GetComponent<Collider>().enabled = false;
+
+                for (int j = 0; j < Salles[i].transform.childCount; j++)
+                {
+                    Salles[i].transform.GetChild(j).gameObject.GetComponent<Collider>().enabled = false;
+                }
+
 
             }
         }
