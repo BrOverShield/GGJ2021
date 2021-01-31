@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     int Mydimmenssion = 0;
     public bool questComplete = false;
     public GameObject QuestCompleteFX;
-
+    float animPaperTImer = 0;
+    bool IsPaperAnimActive = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -34,11 +35,32 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            this.gameObject.transform.GetChild(1).GetComponent<Animator>().SetInteger("AnimState",2);
+            animPaperTImer = 0;
+            IsPaperAnimActive = true;
         }
         if(Input.GetKeyUp(KeyCode.Q))
         {
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            animPaperTImer = 0;
+            this.gameObject.transform.GetChild(1).GetComponent<Animator>().SetInteger("AnimState", 0);
+            //IsPaperAnimActive = true;
+        }
+        if(IsPaperAnimActive)
+        {
+            animPaperTImer += Time.deltaTime;
+            if(animPaperTImer>=0.3f)
+            {
+                animPaperTImer = 0;
+                IsPaperAnimActive = false;
+                if(this.gameObject.transform.GetChild(1).GetComponent<Animator>().GetInteger("AnimState")==1)
+                {
+                    this.gameObject.transform.GetChild(1).GetComponent<Animator>().SetInteger("AnimState", 2);
+                }
+                if (this.gameObject.transform.GetChild(1).GetComponent<Animator>().GetInteger("AnimState") == 3)
+                {
+                    this.gameObject.transform.GetChild(1).GetComponent<Animator>().SetInteger("AnimState", 0);
+                }
+            }
         }
     }
    

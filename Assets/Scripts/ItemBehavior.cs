@@ -50,12 +50,17 @@ public class ItemBehavior : MonoBehaviour
                 pickup();
             }
         }
+        if(Input.GetKeyDown(KeyCode.F5))
+        {
+            player.GetComponent<AudioSource>().Play();
+        }
     }
     void pickup()
     {
         player.questComplete = true;
         QM.FocusQuestComplete = true;
         this.gameObject.SetActive(false);
+        player.GetComponent<AudioSource>().Play();
         if(E!=null)
         {
             QM.FocusQuestComplete = true;
