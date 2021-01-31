@@ -31,6 +31,25 @@ public class Manager : MonoBehaviour
         {
             WringDirectionTimeOut = 0;
         }
+        if(DelayActivationCollider)
+        {
+            passTableTimer += Time.deltaTime;
+            if(passTableTimer>1f)
+            {
+                if (Salles[3].GetComponent<DimmensionID>().ID == FocusPortalid)
+                {
+                    for (int j = 0; j < Salles[3].transform.childCount; j++)
+                    {
+                       
+                            Salles[3].transform.GetChild(j).gameObject.GetComponent<Collider>().enabled = true;
+                        
+
+                    }
+
+
+                }
+            }
+        }
     }
     void ResetDimmenssions()
     {
@@ -97,6 +116,8 @@ public class Manager : MonoBehaviour
             }
         }
     }
+    float passTableTimer = 0;
+    bool DelayActivationCollider = false;
     public void ActivateSalles()
     {
         for (int i = 0; i < Salles.Length; i++)
@@ -106,7 +127,15 @@ public class Manager : MonoBehaviour
             {
                 for (int j = 0; j < Salles[i].transform.childCount; j++)
                 {
-                    Salles[i].transform.GetChild(j).gameObject.GetComponent<Collider>().enabled = true;
+                    if(FocusPortalid==3)
+                    {
+                        DelayActivationCollider = true;
+                    }
+                    else
+                    {
+                        Salles[i].transform.GetChild(j).gameObject.GetComponent<Collider>().enabled = true;
+                    }
+                    
                 }
                 
                 
