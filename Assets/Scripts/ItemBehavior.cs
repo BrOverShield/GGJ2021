@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class ItemBehavior : MonoBehaviour
 {
+    QuestManager QM;
     public GameObject E;
     bool isFocus = false;
     PlayerController player;
+    int QuestId;
+    AudioClip FoundSound;
     //public GameObject EToPickup;
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        QM = FindObjectOfType<QuestManager>();
     }
     public void ShowE()
    {
-        E.SetActive(true);
-        isFocus = true;
+        if(QM.Progressid==QuestId)
+        {
+            if (E != null)
+            {
+                E.SetActive(true);
+            }
+            if(FoundSound!=null)
+            {
+                
+            }
+            isFocus = true;
+        }
+       
    }
     public void HideE()
     {
-        E.SetActive(false);
+        if(E!=null)
+        {
+            E.SetActive(false);
+        }
+       
         isFocus = false;
     }
     private void Update()
@@ -36,6 +55,11 @@ public class ItemBehavior : MonoBehaviour
     {
         player.questComplete = true;
         this.gameObject.SetActive(false);
-        E.SetActive(false);
+        if(E!=null)
+        {
+            QM.FocusQuestComplete = true;
+            E.SetActive(false);
+        }
+       
     }
 }

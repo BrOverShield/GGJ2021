@@ -11,9 +11,11 @@ public class QuestGiverBehavior : MonoBehaviour
     float CarTimeOff = 0;
     public GameObject QuestCompleteFx;
     public GameObject ItemShow;
+    QuestManager QM;
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        QM = FindObjectOfType<QuestManager>();
     }
     public void ShowTalkButton()
     {
@@ -31,16 +33,18 @@ public class QuestGiverBehavior : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                if(player.questComplete==false)
+                if(QM.HasQuestActive==false)
                 {
-                    giveQuest();
+                    QM.GiveQuest();
                 }
                 else
                 {
-                    Instantiate(QuestCompleteFx, this.transform.position, Quaternion.identity);
-                    ItemShow.SetActive(true);
-                    //this.GetComponent<Animator>().enabled = false;
+                    if(QM.FocusQuestComplete)
+                    {
+                        QM.QuestComplete();
+                    }
                 }
+                
                 
             }
             
