@@ -8,7 +8,7 @@ public class ItemBehavior : MonoBehaviour
     public GameObject E;
     bool isFocus = false;
     PlayerController player;
-    int QuestId;
+    public int QuestId=0;
     AudioClip FoundSound;
     //public GameObject EToPickup;
     private void Start()
@@ -18,7 +18,7 @@ public class ItemBehavior : MonoBehaviour
     }
     public void ShowE()
    {
-        if(QM.Progressid==QuestId)
+        if(QM.Progressid==QuestId&&QM.HasQuestActive)
         {
             if (E != null)
             {
@@ -54,6 +54,7 @@ public class ItemBehavior : MonoBehaviour
     void pickup()
     {
         player.questComplete = true;
+        QM.FocusQuestComplete = true;
         this.gameObject.SetActive(false);
         if(E!=null)
         {

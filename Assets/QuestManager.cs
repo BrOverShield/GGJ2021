@@ -13,7 +13,7 @@ public class QuestManager : MonoBehaviour
 
     public bool FocusQuestComplete = false;
     public bool HasQuestActive = false;
-    public Texture[] ObjectsDrawings;
+    public Material[] ObjectsDrawings;
     public GameObject PlayerPaper;
     public AudioClip QuestCompleteClip;
     public GameObject TextPlayer;
@@ -27,17 +27,18 @@ public class QuestManager : MonoBehaviour
         FocusQuestComplete = false;
         HasQuestActive = false;
         Progressid++;
-        
-        
+
+
         TextPlayer.GetComponent<TextMesh>().text = Progressid.ToString() + "/" + ObjectsDrawings.Length.ToString();
     }
     public void GiveQuest()
     {
-        if(Progressid<ObjectsDrawings.Length)
+        
+        if (Progressid < ObjectsDrawings.Length)
         {
             TextPlayer.GetComponent<TextMesh>().text = Progressid.ToString() + "/" + ObjectsDrawings.Length.ToString();
             HasQuestActive = true;
-            PlayerPaper.GetComponent<Material>().SetTexture("Albedo",ObjectsDrawings[Progressid]);
+            PlayerPaper.GetComponent<MeshRenderer>().material = ObjectsDrawings[Progressid];
         }
         else
         {
