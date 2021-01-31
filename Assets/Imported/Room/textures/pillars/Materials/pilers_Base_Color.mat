@@ -72,7 +72,7 @@ Material:
     - _OcclusionStrength: 1
     - _OriRefValue: 3
     - _Parallax: 0.02
-    - _RefValue: 3
+    - _RefValue: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
