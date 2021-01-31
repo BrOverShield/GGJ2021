@@ -36,12 +36,15 @@ public class QuestGiverBehavior : MonoBehaviour
                 if(QM.HasQuestActive==false)
                 {
                     QM.GiveQuest();
+                    GetComponent<AudioSource>().Play();
+                    QM.PlayerPaper.transform.parent.GetComponent<Animator>().SetInteger("AnimState", 2);
                 }
                 else
                 {
                     if(QM.FocusQuestComplete)
                     {
                         QM.QuestComplete();
+                        GetComponent<AudioSource>().Play();
                     }
                 }
                 
@@ -56,13 +59,13 @@ public class QuestGiverBehavior : MonoBehaviour
         }
         if(CarTimeOff>5f)
         {
-            QuestCard.SetActive(false);
+           // QuestCard.SetActive(false);
         }
 
     }
     void giveQuest()
     {
         CarTimeOff = 0f;
-        QuestCard.SetActive(true);
+        
     }
 }
