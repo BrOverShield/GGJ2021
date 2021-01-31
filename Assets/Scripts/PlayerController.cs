@@ -32,7 +32,14 @@ public class PlayerController : MonoBehaviour
         float yy = 5 * -Input.GetAxis("Mouse Y");
         //this.gameObject.transform.Rotate(00, xx, 0);
 
-        
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        if(Input.GetKeyUp(KeyCode.Q))
+        {
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
    
     private void OnTriggerEnter(Collider other)
