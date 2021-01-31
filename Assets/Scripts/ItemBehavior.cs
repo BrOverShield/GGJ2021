@@ -6,7 +6,7 @@ public class ItemBehavior : MonoBehaviour
 {
     QuestManager QM;
     public GameObject E;
-    bool isFocus = false;
+    public bool isFocus = false;
     PlayerController player;
     public int QuestId=0;
     AudioClip FoundSound;

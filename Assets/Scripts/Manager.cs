@@ -127,14 +127,13 @@ public class Manager : MonoBehaviour
             {
                 for (int j = 0; j < Salles[i].transform.childCount; j++)
                 {
-                    if(FocusPortalid==3)
+                    Collider[] cols = Salles[i].transform.GetChild(j).gameObject.GetComponents<Collider>();
+                    foreach (Collider c in cols)
                     {
-                        DelayActivationCollider = true;
+                        c.enabled = true;
                     }
-                    else
-                    {
-                        Salles[i].transform.GetChild(j).gameObject.GetComponent<Collider>().enabled = true;
-                    }
+                        
+                    
                     
                 }
                 
@@ -145,7 +144,12 @@ public class Manager : MonoBehaviour
 
                 for (int j = 0; j < Salles[i].transform.childCount; j++)
                 {
-                    Salles[i].transform.GetChild(j).gameObject.GetComponent<Collider>().enabled = false;
+                    Collider[] cols = Salles[i].transform.GetChild(j).gameObject.GetComponents<Collider>();
+                    foreach (Collider c in cols)
+                    {
+                        c.enabled = false;
+                    }
+                    
                 }
 
 
