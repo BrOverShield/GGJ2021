@@ -30,8 +30,8 @@ Material:
     m_Floats:
     - _Glossiness: 0.5
     - _Metallic: 0
-    - _OriRefValue: 0
-    - _RefValue: 0
+    - _OriRefValue: 99
+    - _RefValue: 99
     - _Shininess: 0.1829303
     - _StencilTest: 3
     m_Colors:
